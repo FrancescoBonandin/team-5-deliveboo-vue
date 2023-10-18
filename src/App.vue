@@ -1,4 +1,5 @@
 <script >
+
   import headerApp   from './components/Header.vue';
 
   import mainApp  from './components/Main.vue';

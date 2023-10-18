@@ -1,33 +1,45 @@
 <script >
 
-import navComponent  from '../components/HeaderComponent/Nav.vue';
+import axios from 'axios';
   
   export default {
 
     components:{
 
-      navComponent,
+      
 
     },
 
     data(){
 
-      return {}
+      return {
+
+      restaurants : []
+
+      }
 
     },
 
     methods:{
 
       
+    },
+
+    created(){
+
+      
     }
-    
+
   }
+    
+ 
 
  </script>
 
  <template>
 
-  <navComponent/>
+  
+  
 
  </template>
 

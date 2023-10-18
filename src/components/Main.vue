@@ -1,4 +1,5 @@
-<script >
+
+<script>
   
   export default {
 
@@ -25,7 +26,7 @@
 
  <template>
 
-  main
+    <router-view></router-view>
 
  </template>
 

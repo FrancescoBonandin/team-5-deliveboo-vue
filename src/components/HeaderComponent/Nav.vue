@@ -1,12 +1,10 @@
 <script >
-
-import navComponent  from '../components/HeaderComponent/Nav.vue';
   
   export default {
 
     components:{
 
-      navComponent,
+      
 
     },
 
@@ -27,7 +25,7 @@ import navComponent  from '../components/HeaderComponent/Nav.vue';
 
  <template>
 
-  <navComponent/>
+   nav
 
  </template>
 

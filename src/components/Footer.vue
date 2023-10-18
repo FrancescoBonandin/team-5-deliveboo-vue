@@ -1,10 +1,12 @@
 <script >
+
+import info  from '../components/FooterComponent/Info.vue';
   
   export default {
 
     components:{
 
-      
+      info
 
     },
 
@@ -25,7 +27,7 @@
 
  <template>
 
-   footer
+  <info/>
 
  </template>
 
