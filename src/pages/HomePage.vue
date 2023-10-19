@@ -20,7 +20,9 @@ export default {
 
     selectedCategories : [],
 
-    categories : []
+    categories : [],
+
+    filteredRestaurants : [],
 
     }
 
@@ -37,12 +39,15 @@ export default {
     findRestaurant(){
 
       axios.get('http://127.0.0.1:8000/api/filteredRestaurants', {
-    params: {
-        'selectedCategories': this.selectedCategories
-    }
+      params: {
+          'selectedCategories': this.selectedCategories
+      }
       })
     .then(response => {
         // Handle the response data
+        console.log(response.data);
+        this.filteredRestaurants=response.data.restaurants
+
         console.log(response.data);
     })
     .catch(error => {
@@ -57,15 +62,7 @@ export default {
 
   created(){
 
-    axios.get('http://127.0.0.1:8000/api/restaurants/')
 
-    .then(response =>{
-
-    this.restaurants = response.data.restaurants;
-
-    // console.log(this.restaurants);
-
-    })
 
     axios.get('http://127.0.0.1:8000/api/categories/')
 
@@ -111,9 +108,8 @@ export default {
   
 </div>
 
-
-<ul v-for="restaurant in restaurants">
-
+  <ul v-for="restaurant in filteredRestaurants">
+  
   <!-- <li v-if="selectedCategory.some(element => restaurant.categories.includes(element))">  -->
 
     <!-- <button v-on:click="selected(selectedCategory,  )"></button> -->
@@ -121,7 +117,7 @@ export default {
   <li>
 
     <div>
-
+  
       <router-link  :to="{name : 'restaurant-menu' , params : { id : restaurant.id}}"> 
 
         <div>
@@ -147,12 +143,14 @@ export default {
         </div>
 
       </router-link>
-    
+      
     </div>
 
-</li>
+  </li>
 
 </ul>
+
+
 
 
 </template>
