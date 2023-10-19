@@ -171,7 +171,7 @@ export default {
         <div>
 
           <!-- provvisorio -->
-          <img  v-if="restaurant.image" :src="restaurant.image" alt="">
+          <img  v-if="restaurant.image" :src="restaurant.full_image" alt="">
 
           <!-- <img  v-if="restaurant.image" :src="'http://127.0.0.1:8000/storage' + restaurant.image" alt=""> -->
 
