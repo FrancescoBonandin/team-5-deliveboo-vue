@@ -34,34 +34,38 @@ export default {
 
   methods:{
 
-    findRestaurant(categories_ids){
+    findRestaurant(){
 
-      axios.get('http://127.0.0.1:8000/api/restaurants/')
-
-      .then(response =>{
-
-      this.restaurants = response.data.restaurants;
-
-      console.log('funziona');
-
+      axios.get('http://127.0.0.1:8000/api/filteredRestaurants', {
+    params: {
+        'selectedCategories': this.selectedCategories
+    }
       })
+    .then(response => {
+        // Handle the response data
+        console.log(response.data);
+    })
+    .catch(error => {
+        // Handle any errors
+        console.error(error);
+    });
 
     }
-    
+
   
   },
 
   created(){
 
-  //   axios.get('http://127.0.0.1:8000/api/restaurants/')
+    axios.get('http://127.0.0.1:8000/api/restaurants/')
 
-  //   .then(response =>{
+    .then(response =>{
 
-  //   this.restaurants = response.data.restaurants;
+    this.restaurants = response.data.restaurants;
 
-  //   // console.log(this.restaurants);
+    // console.log(this.restaurants);
 
-  //   })
+    })
 
     axios.get('http://127.0.0.1:8000/api/categories/')
 
