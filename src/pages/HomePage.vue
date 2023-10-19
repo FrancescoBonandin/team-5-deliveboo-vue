@@ -20,6 +20,7 @@ export default {
 
     selectedCategories : [],
 
+    categories : []
 
     }
 
@@ -27,27 +28,40 @@ export default {
 
   computed:{
 
-   
+    
 
   },
 
   methods:{
 
-    
+    findRestaurant(categories_ids){
 
+      axios.get('http://127.0.0.1:8000/api/restaurants/')
+
+      .then(response =>{
+
+      this.restaurants = response.data.restaurants;
+
+      console.log('funziona');
+
+      })
+
+    }
+    
+  
   },
 
   created(){
 
-    axios.get('http://127.0.0.1:8000/api/restaurants/')
+  //   axios.get('http://127.0.0.1:8000/api/restaurants/')
 
-    .then(response =>{
+  //   .then(response =>{
 
-    this.restaurants = response.data.restaurants;
+  //   this.restaurants = response.data.restaurants;
 
-    // console.log(this.restaurants);
+  //   // console.log(this.restaurants);
 
-    })
+  //   })
 
     axios.get('http://127.0.0.1:8000/api/categories/')
 
@@ -76,6 +90,12 @@ export default {
     <input type="checkbox" :id="category.id" :name="category" :value="category.id" v-model="selectedCategories">
 
     <label :for="category.id ">{{ category.category_name }}</label><br>
+
+  </div>
+
+  <div>
+
+    <button @click="findRestaurant(selectedCategories)" ></button>
 
   </div>
 
