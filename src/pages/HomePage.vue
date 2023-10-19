@@ -20,9 +20,6 @@ export default {
 
     selectedCategories : [],
 
-    categories :[],
-
-    selectedRestaurants : []
 
     }
 
@@ -30,72 +27,13 @@ export default {
 
   computed:{
 
-    findRestaurants(){
-
-      // this.restaurants = this.selectedCategory
-
-
-      for (let index = 0; index < this.selectedCategories.length; index++) {
-
-        this.selectedRestaurants = this.selectedCategories[index].restaurants;
-
-        console.log(this.selectedRestaurants)
-
-        for (let index = 0; index < this.selectedRestaurants.length; index++) {
-
-          const restaurant = this.selectedRestaurants[index];
-
-          if (this.restaurants.includes(restaurant)) {
-
-            console.log('nessun ristorante')
-            
-          }
-          else{
-
-            this.restaurants.push(restaurant)
-
-            console.log(this.restaurants);
-
-          }
-
-        }
-
-      }
-
-    }
+   
 
   },
 
   methods:{
 
-    pushRestaurants(arrayR){
-
-      arrayR.forEach(restaurant => {
-
-        if (restaurant.some(element=>{return this.restaurants.includes(element)})) {
-
-          console.log('presente')
-          
-        }else{
-
-          console.log('da aggiunger')
-
-        }
-        
-      });
-
-      // this.restaurants = this.restaurants.push(arrayR)
-
-
-    },
-  
-    // selected( param, param2){
-
-    //   let res = param.some(element=>{return param2.includes(element)})
-
-    //   // console.log(res);
-
-    // }
+    
 
   },
 
@@ -135,7 +73,7 @@ export default {
 
     <!-- v-on:click="pushRestaurants(category.restaurants)" -->
 
-    <input type="checkbox" :id="category.id" v-on:click="pushRestaurants(category.restaurants)"   :name="category" :value="category.id" v-model="selectedCategories">
+    <input type="checkbox" :id="category.id" :name="category" :value="category.id" v-model="selectedCategories">
 
     <label :for="category.id ">{{ category.category_name }}</label><br>
 
