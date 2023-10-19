@@ -1,13 +1,13 @@
 
 <script>
 
-import axios from 'axios';
+  import axios from 'axios';
   
   export default {
 
     components:{
 
-      
+    
 
     },
 
@@ -15,7 +15,7 @@ import axios from 'axios';
 
       return {
 
-      dishes :[]
+      dishes :[],
 
       }
 
@@ -32,22 +32,19 @@ import axios from 'axios';
 
         .then(response =>{
 
-        
-
-        console.log(response.data.restaurant.dishes);
+        console.log(response.data.restaurant);
 
         this.dishes = response.data.restaurant.dishes
 
       })
-      }
+
+    }
 
   }
     
- 
+</script>
 
- </script>
-
- <template>
+<template>
 
   <div v-for="dish in dishes">
 
@@ -59,13 +56,10 @@ import axios from 'axios';
 
   </div>
 
-  
-  
+</template>
 
- </template>
-
- <style lang="scss">
+<style lang="scss">
 
   
 
- </style>
+</style>
