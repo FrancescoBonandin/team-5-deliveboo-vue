@@ -11,19 +11,70 @@
 
     },
 
+    props:{
+
+      productsPrices : Array,
+
+      cart : Array,
+
+      order : Array
+
+    },
+
     data(){
 
       return {
 
       dishes :[],
 
+      quantity : 0,
+
       }
+
+    },
+
+    computed:{
+
+      
 
     },
 
     methods:{
 
-      
+      addCart(product , cart){
+
+        cart.push(product)
+
+        let setCart = new Set(cart.map((product)=>product));
+
+        let cleanCart = (Array.from(setCart))
+          
+        cleanCart.forEach(item => {
+
+          if(item.id == product.id ){
+
+            item.quantity = item.quantity + 1
+
+          }
+
+        })
+
+        console.log('NEW CART');
+
+        console.log(cleanCart);
+
+      },
+
+      // addPrice(product){
+
+      //   this.productsPrices.push(Number(product.price))
+
+      //   console.log('--- PRICE EACH PRODUCT ---');
+
+      //   console.log(this.productsPrices);
+
+      // }
+
     },
 
     created(){
@@ -32,9 +83,16 @@
 
         .then(response =>{
 
-        console.log(response.data.restaurant);
-
         this.dishes = response.data.restaurant.dishes
+
+        this.dishes.forEach(dish => {
+
+        dish['quantity'] = 0
+
+        console.log(dish)
+            
+        });
+
 
       })
 
@@ -53,6 +111,8 @@
       <li>{{ dish.name }}</li>
       
     </ul>
+
+    <button  @click="addCart(dish , cart, )">aggiungi al carrello</button>
 
   </div>
 

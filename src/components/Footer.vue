@@ -1,38 +1,50 @@
 <script >
 
-import info  from '../components/FooterComponent/Info.vue';
+import { store } from "../js/store";
+
+import infoComponent from '../components/FooterComponent/Info.vue'
   
-  export default {
+export default {
 
-    components:{
+  components:{
 
-      info
+    infoComponent
 
-    },
+  },
 
-    data(){
+  data(){
 
-      return {}
+    return {
 
-    },
+      store,
 
-    methods:{
-
-      
     }
-    
+
+  },
+
+  computed:{
+
+
+  },
+
+
+  methods:{
+
+
   }
-
- </script>
-
- <template>
-
-  <info/>
-
- </template>
-
- <style lang="scss">
-
   
+}
 
- </style>
+</script>
+
+<template>
+
+  <infoComponent/>
+
+</template>
+
+<style lang="scss" scoped>
+
+
+
+</style>

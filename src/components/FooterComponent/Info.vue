@@ -1,36 +1,44 @@
 <script >
   
-  export default {
+export default {
 
-    components:{
+  components:{
 
-      
+    
+  },
 
-    },
+  props:{
 
-    data(){
+  },
 
-      return {}
+  data(){
 
-    },
+    return {}
 
-    methods:{
+  },
 
-      
-    }
+  computed:{
+
+
+  },
+
+  methods:{
+
     
   }
-
- </script>
-
- <template>
-
-   info footer
-
- </template>
-
- <style lang="scss">
-
   
+}
 
- </style>
+</script>
+
+<template>
+
+  info footer
+
+</template>
+
+<style lang="scss" scoped>
+
+
+
+</style>

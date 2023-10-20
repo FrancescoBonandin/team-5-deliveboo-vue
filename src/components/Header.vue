@@ -1,38 +1,58 @@
 <script >
 
+import { store } from "../js/store"
+
 import navComponent  from '../components/HeaderComponent/Nav.vue';
-  
-  export default {
 
-    components:{
+import cartComponent  from '../components/HeaderComponent/Cart.vue';
 
-      navComponent,
+export default {
 
-    },
+  components:{
 
-    data(){
+    navComponent,
 
-      return {}
+    cartComponent,
 
-    },
+  },
 
-    methods:{
+  data(){
 
-      
+    return {
+
+      store,
+
     }
+
+  },
+
+  methods:{
+
     
   }
+  
+}
 
- </script>
+</script>
 
- <template>
+<template>
 
   <navComponent/>
 
- </template>
+  <cartComponent
 
- <style lang="scss">
+  :productsPrices = store.content.productsPrices
 
-  
+  :cart = store.content.cart
 
- </style>
+  :displayables = store.content.displayables
+
+  />
+
+</template>
+
+<style lang="scss">
+
+
+
+</style>
