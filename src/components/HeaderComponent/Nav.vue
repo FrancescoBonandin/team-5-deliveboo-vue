@@ -1,36 +1,46 @@
 <script >
   
-  export default {
+export default {
 
-    components:{
+  components:{
 
-      
+    
 
-    },
+  },
 
-    data(){
+  props:{
 
-      return {}
 
-    },
+  },
 
-    methods:{
+  data(){
 
-      
-    }
+    return {}
+
+  },
+
+  computed:{
+
+
+  },
+
+  methods:{
+
     
   }
-
- </script>
-
- <template>
-
-   nav
-
- </template>
-
- <style lang="scss">
-
   
+}
 
- </style>
+</script>
+
+<template>
+
+  nav
+
+</template>
+
+<style lang="scss">
+
+
+
+</style>
