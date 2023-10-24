@@ -1,6 +1,7 @@
 <script >
 
 import axios from 'axios';
+import {router} from '../js/router'
 
 export default {
 
@@ -24,6 +25,8 @@ export default {
 
     filteredRestaurants : [],
 
+   
+
     }
 
   },
@@ -36,36 +39,9 @@ export default {
 
   methods:{
 
-    findRestaurant(){
+    
 
-      axios.get('http://127.0.0.1:8000/api/filteredRestaurants', {
-
-      params: {
-
-          'selectedCategories': this.selectedCategories
-
-      }
-
-      })
-
-    .then(response => {
-
-        // Handle the response data
-        console.log(response.data);
-
-        this.filteredRestaurants = response.data.restaurants
-
-        console.log(response.data);
-
-    })
-    .catch(error => {
-
-        // Handle any errors
-        console.error(error);
-
-    });
-
-    }
+    
 
   
   },
@@ -77,10 +53,22 @@ export default {
           braintree.dropin.create({
             authorization: 'sandbox_8hfxqwnd_96dqcdztsrmx69jf',
             container: '#dropin-container'
-          }, function (createErr, instance) {
+
+          }, function (createErr, instance ) {
             button.addEventListener('click', function () {
-              instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
-                // Submit payload.nonce to your server
+              instance.requestPaymentMethod(function (requestPaymentMethodErr, payload ) {
+                if (payload) {
+                  // return router.push({name :  'home'})
+                  
+                  
+                }
+                else{
+                  // requestPaymentMethodErr
+                  console.log('Hai sbagliato')
+                 
+
+                }
+
               });
             });
           });
@@ -114,7 +102,64 @@ export default {
         </script> -->
     </div>
   </div>
+  
+  <div class="row" v-if="showData">
+    <div class="col-6">
+      <form action="">
+        <div class="form-floating">
+
+          <label class="form-label" for="name">Name</label>
+
+          <input class="form-control" id="name" type="text" name="name" placeholder="client name" required>
+
+        </div>
+
+        <div class="form-floating">
+
+          <label class="form-label" for="last-name">Last Name</label>
+
+          <input class="form-control" id="last-name" type="text" name="last_name" placeholder="client last name" required>
+
+        </div>
+
+        <div class="form-floating">
+
+          <label class="form-label" for="address">Address</label>
+
+          <input class="form-control" id="address" type="text" name="address" placeholder="client address" required>
+
+        </div>
+
+        <div class="form-floating">
+
+          <label class="form-label" for="phone-number">Phone</label>
+
+          <input class="form-control" id="phone-number" type="tel" name="phone_number" placeholder="clientphonenumber" required>
+
+        </div>
+
+        <div class="form-floating">
+
+          <label class="form-label" for="email">Email</label>
+
+          <input class="form-control" id="email" type="email" name="email" placeholder="client email" required>
+
+        </div>
+
+        <input type="submit" />
+
+      </form>
+      
+    </div>
+  </div>
+
+
+
+
 </div>
+
+
+
 
 
   

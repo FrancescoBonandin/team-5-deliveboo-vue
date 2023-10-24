@@ -40,6 +40,10 @@ const router =  createRouter({
             name :  'PaymentPage' ,
 
             component :PaymentPage , 
+        },
+
+        {
+            path : ''
         }
  
      ]
