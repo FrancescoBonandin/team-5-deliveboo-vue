@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import homePage  from '../pages/HomePage.vue';
 
 import restaurantMenu  from '../pages/RestaurantMenu.vue';
+import PaymentPage  from '../pages/PaymentPage.vue';
 
 
 const router =  createRouter({
@@ -32,6 +33,14 @@ const router =  createRouter({
             component : restaurantMenu ,
 
         },
+
+        {
+            path : '/restaurant/PaymentPage' ,
+
+            name :  'PaymentPage' ,
+
+            component :PaymentPage , 
+        }
  
      ]
  
