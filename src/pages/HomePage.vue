@@ -39,20 +39,30 @@ export default {
     findRestaurant(){
 
       axios.get('http://127.0.0.1:8000/api/filteredRestaurants', {
+
       params: {
+
           'selectedCategories': this.selectedCategories
+
       }
+
       })
+
     .then(response => {
+
         // Handle the response data
         console.log(response.data);
-        this.filteredRestaurants=response.data.restaurants
+
+        this.filteredRestaurants = response.data.restaurants
 
         console.log(response.data);
+
     })
     .catch(error => {
+
         // Handle any errors
         console.error(error);
+
     });
 
     }
@@ -62,15 +72,13 @@ export default {
 
   created(){
 
-
-
     axios.get('http://127.0.0.1:8000/api/categories/')
 
     .then(response =>{
 
     // console.log(response);
 
-    this.categories = response.data.categories
+      this.categories = response.data.categories
 
     })
 

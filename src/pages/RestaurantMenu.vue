@@ -1,23 +1,20 @@
-
 <script>
 
   import axios from 'axios';
-  
+
+  import { store } from "../js/store"
+
   export default {
 
     components:{
 
-    
+
 
     },
 
     props:{
 
-      productsPrices : Array,
 
-      cart : Array,
-
-      order : Array
 
     },
 
@@ -27,7 +24,9 @@
 
       dishes :[],
 
-      quantity : 0,
+      found : false,
+
+      store 
 
       }
 
@@ -35,45 +34,78 @@
 
     computed:{
 
-      
 
     },
 
     methods:{
 
-      addCart(product , cart){
+      addProduct(product){
+        
+        console.log('add product from menu')
 
-        cart.push(product)
+        console.log(this.store.content.cart);
 
-        let setCart = new Set(cart.map((product)=>product));
+        if(this.store.content.cart.has(product)||Array.from(this.store.content.cart).find(e => e.id == product.id)){
 
-        let cleanCart = (Array.from(setCart))
-          
-        cleanCart.forEach(item => {
+          this.store.content.cart.forEach(item => {
 
-          if(item.id == product.id ){
+            if(item.id == product.id){
 
-            item.quantity = item.quantity + 1
+              console.log('product all ready exist')
 
-          }
+              item.quantity = item.quantity + 1
 
-        })
+            }
 
-        console.log('NEW CART');
+          })
 
-        console.log(cleanCart);
+        }
+        else if (this.store.content.cart.size === 0){
+
+          this.store.content.cart.add(product)
+
+        }
+        else if(Array.from(this.store.content.cart).find(e => e.restaurant_id == product.restaurant_id)){
+
+          this.store.content.cart.add(product)
+
+        }
 
       },
 
-      // addPrice(product){
+      updateTotal(product){
 
-      //   this.productsPrices.push(Number(product.price))
+        this.store.content.prices = []
 
-      //   console.log('--- PRICE EACH PRODUCT ---');
+        Array.from(this.store.content.cart).forEach(element => this.store.content.prices.push(Number(element.price).toFixed(2) * Number(element.quantity).toFixed(2))) 
 
-      //   console.log(this.productsPrices);
+        console.log(this.store.content.prices);
 
-      // }
+          this.store.content.currentPrice = this.store.content.prices.reduce(function(a, b,){
+
+            let sum = a + b 
+
+            return sum.toFixed(2)
+
+          })
+
+        console.log(this.store.content.currentPrice);
+
+      },
+
+      saveInLocal (product){
+
+        localStorage.removeItem('cart',)
+
+        localStorage.setItem('cart', JSON.stringify(Array.from(this.store.content.cart)))
+
+        this.store.content.cart = new Set (this.store.content.cart)
+
+        localStorage.removeItem('total_price',)
+
+        localStorage.setItem('total_price', JSON.stringify(this.store.content.currentPrice))
+
+      },
 
     },
 
@@ -87,32 +119,34 @@
 
         this.dishes.forEach(dish => {
 
-        dish['quantity'] = 0
+        dish['quantity'] = 1
 
-        console.log(dish)
-            
         });
 
+        console.log(this.dishes);
 
       })
 
     }
 
   }
-    
 </script>
 
 <template>
 
-  <div v-for="dish in dishes">
+  <div id="dish-showcase">
 
-    <ul>
+    <div class="dish-card" v-for="dish in dishes">
 
-      <li>{{ dish.name }}</li>
-      
-    </ul>
+      <ul>
 
-    <button  @click="addCart(dish , cart, )">aggiungi al carrello</button>
+        <li>{{ dish.name }}</li>
+
+      </ul>
+
+      <button @click="addProduct(dish, cart), updateTotal(dish), saveInLocal(dish)">aggiungi al carrello</button>
+
+    </div>
 
   </div>
 
@@ -120,6 +154,28 @@
 
 <style lang="scss">
 
+#dish-showcase {
   
+  width: 600px;
+
+  margin: auto;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  border: 2px solid green;
+
+  .dish-card {
+
+    border: 2px solid yellow;
+
+    margin: 0.625rem;
+
+    padding: 0.3125rem;
+
+  }
+
+}
 
 </style>

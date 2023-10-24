@@ -20,7 +20,7 @@ export default {
 
     return {
 
-      store,
+  
 
     }
 
@@ -39,15 +39,7 @@ export default {
 
   <navComponent/>
 
-  <cartComponent
-
-  :productsPrices = store.content.productsPrices
-
-  :cart = store.content.cart
-
-  :displayables = store.content.displayables
-
-  />
+  <cartComponent/>
 
 </template>
 

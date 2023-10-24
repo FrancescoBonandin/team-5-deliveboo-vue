@@ -1,7 +1,5 @@
 
 <script>
-  
-  import { store } from "../js/store"
 
   export default {
 
@@ -15,7 +13,7 @@
 
       return {
 
-        store,
+        
 
       }
 
@@ -37,15 +35,7 @@
 
  <template>
 
-    <router-view
-
-    :productsPrices = store.content.productsPrices
-
-    :cart = store.content.cart
-
-    :order = store.content.order
-    
-    ></router-view>
+    <router-view></router-view>
 
  </template>
 

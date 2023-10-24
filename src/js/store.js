@@ -4,11 +4,23 @@ export const store = reactive({
 
     content : {
 
-        productsPrices : [0],
+        Price : 0,
 
-        cart : [],
+        cart : new Set(),
 
-        order : []
+        prices : [],
+
+        currentPrice : 0,
+
+        sum : 0,
+
+        order : {
+
+            'products' : null,
+
+            'total'    : 0
+
+        }
 
     }
 

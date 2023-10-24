@@ -1,4 +1,6 @@
 <script>
+
+import { store } from "../../js/store"
   
 export default {
 
@@ -9,21 +11,13 @@ export default {
 
   props:{
 
-    productsPrices : Array,
-
-    cart : Array,
-
   },
 
   data(){
 
     return {
 
-      index : null,
-
-      sum : 0,
-
-      quantity : 0,
+      store,
       
     }
 
@@ -31,29 +25,29 @@ export default {
 
   computed:{
 
-    displayCart(){
+    arrayCart(){
 
-      let newCart = new Set(this.cart.map((product)=>product));
+      let  arrayCart = Array.from(this.store.content.cart)
 
-      let displayables = (Array.from(newCart))
-
-      console.log('--- CART DISPLAY ---');
-
-      console.log(displayables)
-
-      return displayables
+      return arrayCart
 
     },
 
-    finalPrice(){
+    displayPrice(){
 
-      // this.sum = this.productsPrices.reduce((a , b) => {
+      let currentPrice
 
-      //     return a + b ;
+      if(this.store.content.trigger == true){
 
-      // })
+        currentPrice = JSON.parse(localStorage.getItem('total_price'))
 
-      // return this.sum
+      }else{
+
+        currentPrice = JSON.parse(localStorage.getItem('total_price'))
+
+      }
+
+      return currentPrice
 
     }
 
@@ -61,74 +55,157 @@ export default {
 
   methods:{
 
-    removeProduct(product, index, cart){
+    removeProduct(product){
 
-      if (product.quantity > 0) {
+      if(this.store.content.cart.has(product)){
 
-        let oldQuantity = product.quantity
+        this.store.content.cart.forEach(item => {
 
-        product['quantity'] = oldQuantity - 1
-        
+          if(item.id == product.id && item.quantity == 1 ){
+
+            this.store.content.cart.delete(item)
+
+          }
+          else if(item.id == product.id && item.quantity > 0 ) {
+
+            item.quantity = item.quantity - 1
+
+          }
+          
+        })
+
       }
-      else if (product.quantity == 0){
 
-        this.cart      
-
-      }
+    },
       
-    
+    addProduct(product){
 
-  },
+      console.log('add product to cart');
 
-  addCart(product){
+      console.log(this.store.content.cart);
 
-    if(product.hasOwnProperty('quantity')){
+      if(this.store.content.cart.has(product)){
 
-      let oldQuantity = product.quantity
+        this.store.content.cart.forEach(item => {
 
-      product['quantity'] = oldQuantity + 1
+          if(item.id == product.id){
 
-      console.log('aumenta la quantita esistente');
+            item.quantity = item.quantity + 1
 
-    }else{
+          }
+          
+        })
 
-      product['quantity'] =  1
+      }
+      else{
 
-      console.log('aumenta la quantita');
+        this.store.content.cart.add(product)
 
-    }
-
-    this.cart.push(product)
-
-    console.log('--- CART ---')
-
-    console.log(this.cart);
+      }
 
     },
 
-    // addPrice(product){
+    updateLocal(){
 
-    // this.productsPrices.push(Number(product.price))
+      localStorage.removeItem('cart') 
 
-    // console.log('--- PRICE EACH PRODUCT ---');
+      localStorage.setItem('cart', JSON.stringify(Array.from(this.store.content.cart)))
 
-    // console.log(this.productsPrices);
+      localStorage.removeItem('total_price',)
 
-    // },
+      localStorage.setItem('total_price', JSON.stringify(this.store.content.currentPrice))
+
+      this.store.content.cart = new Set(this.store.content.cart)
+
+    },
+
+    updateTotal(){
+
+      this.store.content.prices = []
+
+        Array.from(this.store.content.cart).forEach(element => this.store.content.prices.push(Number(element.price).toFixed(2) * Number(element.quantity).toFixed(2))) 
+
+        console.log(this.store.content.prices);
+
+        if(this.store.content.prices.length == 0){
+
+          this.store.content.currentPrice = 0
+
+        }else{
+
+          this.store.content.currentPrice = this.store.content.prices.reduce(function(a, b,){
+
+            let sum = a + b 
+
+            return sum.toFixed(2)
+
+          })
+
+        }
+
+      console.log(this.store.content.currentPrice);
+
+    },
+
+    buyProducts(cart, total){
+
+      if(cart.length > 0){
+
+        this.store.content.order.products = cart
+
+        this.store.content.order.total = total
+
+        console.log(this.store.content.order)
+
+      }else{
+
+        console.log('il carrello è vuoto');
+
+      }
+
+    }
+           
+  },
+
+  created () {
+
+    if(Array(JSON.parse(localStorage.getItem('cart'))).length == 0 ){
+
+      this.store.content.cart = new Set()
+
+      localStorage.removeItem('cart',)
+
+      localStorage.removeItem('total_price',)
+
+      localStorage.setItem('cart', this.store.content.cart)
+
+      localStorage.setItem('total_price', this.store.content.currentPrice)
+
+      console.log('new empty set');
+
+    }else{
+    
+      console.log('new set with local storage values');
+
+      this.store.content.cart = new Set(JSON.parse(localStorage.getItem('cart')))
+
+      this.store.content.currentPrice = Number(JSON.parse(localStorage.getItem('total_price')))
+
+    }
 
   }
-  
+      
 }
 
 </script>
 
 <template>
 
-  <div>
+  <div id="my-cart">
 
-    <ul v-for="(product, index) in displayCart ">
+    <ul v-for="(product) in arrayCart">
 
-      <li v-if="product.quantity > 0">
+      <li class="cart-item" >
 
         <div>
 
@@ -148,13 +225,13 @@ export default {
 
         </span>
 
-        <button class="remove-item" @click="removeProduct(product, index, cart ) ">
+        <button class="remove-item" @click="removeProduct(product), updateTotal(), updateLocal() ">
 
           remove product 
 
         </button>
 
-        <button  @click="addCart(product)">
+        <button  @click="addProduct(product), updateTotal(), updateLocal()">
 
           add product
 
@@ -164,18 +241,79 @@ export default {
 
     </ul>
 
-    <div>
+    <div class="total-price"  v-if="this.store.content.currentPrice > 0">
 
-      {{ finalPrice }}
+     {{ store.content.currentPrice.toLocaleString("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 2 })}}
+
+    </div>
+
+    <div class="buy-button">
+
+      <button  @click=" buyProducts( arrayCart, store.content.currentPrice)" >
+
+        finalizza acquisto
+
+      </button>
 
     </div>
 
   </div>
   
+  
 </template>
 
 <style lang="scss" scoped>
 
+  #my-cart{
+
+  width: 18.75rem;
+
+  margin-bottom: 18.75rem;
+
+  border: 2px solid red;
+
+  position:absolute;
+
+  top:0;
+
+  right:0;
+
+    .cart-item{
+
+      border: 1px solid violet;
+
+      margin: .3125rem;
+      
+      padding: .3125rem;
+
+      button {
+
+        margin:.3125rem
+
+      }
+
+    }
+
+    .total-price{
+
+      border: 1px solid grey;
+
+      margin: .3125rem;
+
+      padding: .3125rem;
+
+    }
+
+    .buy-button{
+
+      border: 1px solid blue;
+
+      margin: .3125rem;
+
+      padding: .3125rem;
+
+    }
+  }
 
 
 </style>
