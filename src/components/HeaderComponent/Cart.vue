@@ -252,7 +252,7 @@ export default {
       <button  @click=" buyProducts( arrayCart, store.content.currentPrice)" >
 
         
-        <router-link  :to="{name : 'PaymentPage'}">finalizza acquisto</router-link>
+        <router-link  :to="{name : 'CheckoutPage'}">finalizza acquisto</router-link>
       </button>
 
     </div>

@@ -20,6 +20,16 @@ export const store = reactive({
 
             'total'    : 0
 
+        },
+
+        customerInfo : {
+
+            'name' : null,
+            'last_name' : null,
+            'address' : null,
+            'phone_number' : null,
+            'email' : null,
+      
         }
 
     }
