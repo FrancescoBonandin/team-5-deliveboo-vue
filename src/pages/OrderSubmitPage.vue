@@ -58,12 +58,18 @@ export default {
 
  .then(response =>{
    console.log(response.data)
-   if( response.data.orders=='ok'){
+   if( response.data.order=='ok'){
 
-    //  return router.push({name : 'PaymentPage'})
-     console.log('funziona')
+    console.log('funziona')
+    localStorage.removeItem('cart');
+    localStorage.removeItem('total_price');
+    this.store.content.customerInfo.forEach(element => {
+      element=null
+    });
+    return router.push({name : 'PaymentPage'})
 
-   }
+    
+  }
 
  })
 
