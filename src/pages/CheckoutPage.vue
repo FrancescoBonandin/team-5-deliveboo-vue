@@ -22,43 +22,72 @@ export default {
 
     dbErrors : '',
 
+    flag:false
+
     }
 
   },
 
   computed:{
-
     
+  
 
   },
 
   methods:{
-    checkOrder(){
+    braintree(){
+      let button = document.querySelector('#submit-button');
 
-     let data={ 
-          cart_total_price: JSON.parse(localStorage.getItem('total_price')),
-          cart_products: JSON.parse(localStorage.getItem('cart')),
+      braintree.dropin.create({
+        authorization: 'sandbox_8hfxqwnd_96dqcdztsrmx69jf',
+        container: '#dropin-container'
 
-          customer_name: this.store.content.customerInfo.name,
-          customer_last_name: this.store.content.customerInfo.last_name,
-          customer_address: this.store.content.customerInfo.address,
-          customer_phone_number: this.store.content.customerInfo.phone_number,
-          customer_email: this.store.content.customerInfo.email,
-          restaurant_id: JSON.parse(localStorage.getItem('cart'))[0].restaurant_id,
-        }
+      },
+      (createErr, instance )=> {
+      button.addEventListener('click',()=> {
+        instance.requestPaymentMethod((requestPaymentMethodErr, payload )=> {
+          if (payload) {
 
-        console.log(data)
+           return this.flag=true
+
+          }
+          else{
+            
+            return this.flag=false
+            
+          }
+
+    });
+  });
+}
+);
+},
+  checkOrder(){
+    if(this.flag===true){
+      let data={ 
+            cart_total_price: JSON.parse(localStorage.getItem('total_price')),
+            cart_products: JSON.parse(localStorage.getItem('cart')),
+
+            customer_name: this.store.content.customerInfo.name,
+            customer_last_name: this.store.content.customerInfo.last_name,
+            customer_address: this.store.content.customerInfo.address,
+            customer_phone_number: this.store.content.customerInfo.phone_number,
+            customer_email: this.store.content.customerInfo.email,
+            restaurant_id: JSON.parse(localStorage.getItem('cart'))[0].restaurant_id,
+          }
+
+          console.log(data)
 
       axios.post('http://127.0.0.1:8000/api/orders/', data,{
         headers:{'Content-Type':'multipart/form-data' }
       }
-   )
+      )
 
       .then(response =>{
         // console.log(response.data)
         if( response.data.orders=='ok'){
 
-          return router.push({name : 'PaymentPage'})
+          return router.push({name : 'OrderSubmit'})
         //   console.log('funziona')
 
         }
@@ -77,10 +106,13 @@ export default {
       })
 
     }
+    }
 
   },
 
   mounted(){
+
+    this.braintree()
 
    
 
@@ -149,7 +181,14 @@ export default {
 
         </div>
 
-        <input type="submit"/>
+        <div>
+          
+          <div id="dropin-container"></div>
+          <button id="submit-button">Request payment method</button>
+        </div>
+
+
+        <button  :disabled="flag===false" type="submit">Invia</button>
 
       </form>
       
