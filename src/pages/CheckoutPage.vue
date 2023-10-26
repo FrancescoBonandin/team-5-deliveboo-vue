@@ -36,7 +36,7 @@ export default {
     checkOrder(){
 
      let data={ 
-          cart_total_price: JSON.parse(localStorage.getItem('total_price')),
+          cart_total_price: JSON.parse(localStorage.getItem('total_price')).toFixed(2),
           cart_products: JSON.parse(localStorage.getItem('cart')),
 
           customer_name: this.store.content.customerInfo.name,

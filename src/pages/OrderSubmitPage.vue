@@ -1,6 +1,7 @@
 <script>
 
 import { store } from "../js/store";
+import {router} from '../js/router'
 import axios from 'axios'
   
 export default {
@@ -37,7 +38,7 @@ export default {
     SendOrder(){
 
     let data={ 
-        cart_total_price: JSON.parse(localStorage.getItem('total_price')),
+        cart_total_price: JSON.parse(localStorage.getItem('total_price')).toFixed(2),
         cart_products: JSON.parse(localStorage.getItem('cart')),
 
         customer_name: this.store.content.customerInfo.name,
@@ -63,10 +64,21 @@ export default {
     console.log('funziona')
     localStorage.removeItem('cart');
     localStorage.removeItem('total_price');
-    this.store.content.customerInfo.forEach(element => {
-      element=null
-    });
-    return router.push({name : 'PaymentPage'})
+
+    for(let key in this.store.content.customerInfo){
+
+      this.store.content.customerInfo[key]=null
+
+    }
+
+    for(let key in data){
+
+      data[key]=null
+
+    }
+    
+   
+    return router.push({name : 'OrderSuccess'})
 
     
   }

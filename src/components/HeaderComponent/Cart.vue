@@ -253,6 +253,7 @@ export default {
 
         
         <router-link  :to="{name : 'CheckoutPage'}">finalizza acquisto</router-link>
+        
       </button>
 
     </div>

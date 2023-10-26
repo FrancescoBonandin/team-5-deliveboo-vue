@@ -6,6 +6,7 @@ import restaurantMenu  from '../pages/RestaurantMenu.vue';
 import PaymentPage  from '../pages/PaymentPage.vue';
 import CheckoutPage from '../pages/CheckoutPage.vue';
 import OrderSubmitPage from '../pages/OrderSubmitPage.vue';
+import OrderSuccessPage from '../pages/OrderSuccessPage.vue';
 
 
 const router =  createRouter({
@@ -58,6 +59,13 @@ const router =  createRouter({
             name :  'OrderSubmit' ,
 
             component : OrderSubmitPage , 
+        },
+        {
+            path : '/restaurant/CheckoutPage/PaymentPage/OrderSubmit/OrderSuccess' ,
+
+            name :  'OrderSuccess' ,
+
+            component : OrderSuccessPage , 
         },
  
      ]
