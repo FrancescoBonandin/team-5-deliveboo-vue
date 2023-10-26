@@ -113,61 +113,71 @@ export default {
 </script>
 
 <template>
-
-<div class="row">
-    <div class="col">
-        <div v-for="product in cart" class="card">
-
+<div class="container-fluid submit-page position-relative border">
+  <div class="d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle">
+      <div class="col-10 ">
+          <div v-for="product in cart" class="light-bg-card mb-3 text-center p-2">
+  
             <h4 class="card-title">
-                {{ product.name }} X {{ product.quantity }}
+              {{ product.name }} X {{ product.quantity }}
             </h4>
 
-            <div class="row">
+            <div class="row justify-content-between align-items-center">
                 
-                <div class="col-4">
-                    <img :src="product.full_image" alt="">
+                <div class="col-5">
+                  <img :src="product.full_image" alt="" class="img-fluid rounded-3">
 
                 </div>
 
-                <div class="col-8">
+                <div class="col-7">
 
-                    <div>
-                        {{ product.ingredients }}
-                    </div>
+                  <div>
+                    {{ product.ingredients }}
+                  </div>
 
-                    <div>
-                        {{ product.description }}
-                    </div>
-                    
-                    <div>
-                        partial price:{{ product.price*product.quantity}}
-                    </div>
+                  <div>
+                    {{ product.description }}
+                  </div>
+                  
+                  <div>
+                    partial price:{{ product.price*product.quantity}}
+                  </div>
 
                 </div>
-            </div>
-        </div>
-
-        <div>
+              </div>
+          </div>
+  
+          <div class="light-bg-card text-center p-2">
             <h3>
-                I Tuoi Dati
+                Dati Ordine
             </h3>
 
             <div v-for="info in store.content.customerInfo">
                 {{info}}
             </div>
 
-            <button @click="SendOrder() ">
+            <button @click="SendOrder() " class="btn btn-primary">
                 conferma l' ordine
             </button>
-            
-        </div>
-    </div>
+              
+          </div>
+      </div>
+  </div>
+  
 </div>
 
 </template>
 
 <style lang="scss" scoped>
+  .submit-page {
+    background-image: url('../../public/img/deliveboo client simple 2.jpg');
 
+    background-size: cover;
+
+    background-position: bottom;
+
+    min-height: calc(100vh - 7.1875rem);
+  }
 
 
 </style>
