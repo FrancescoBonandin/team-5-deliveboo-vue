@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import homePage  from '../pages/HomePage.vue';
 
 import restaurantMenu  from '../pages/RestaurantMenu.vue';
-import PaymentPage  from '../pages/PaymentPage.vue';
 import CheckoutPage from '../pages/CheckoutPage.vue';
 import OrderSubmitPage from '../pages/OrderSubmitPage.vue';
 import OrderSuccessPage from '../pages/OrderSuccessPage.vue';
@@ -46,22 +45,14 @@ const router =  createRouter({
         },
 
         {
-            path : '/restaurant/CheckoutPage/PaymentPage' ,
-
-            name :  'PaymentPage' ,
-
-            component :PaymentPage , 
-        },
-
-        {
-            path : '/restaurant/CheckoutPage/PaymentPage/OrderSubmit' ,
+            path : '/restaurant/CheckoutPage/OrderSubmit' ,
 
             name :  'OrderSubmit' ,
 
             component : OrderSubmitPage , 
         },
         {
-            path : '/restaurant/CheckoutPage/PaymentPage/OrderSubmit/OrderSuccess' ,
+            path : '/restaurant/CheckoutPage/OrderSubmit/OrderSuccess' ,
 
             name :  'OrderSuccess' ,
 
