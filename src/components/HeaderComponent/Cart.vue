@@ -1,5 +1,5 @@
 <script>
-
+import {router} from '../../js/router'
 import { store } from "../../js/store"
   
 export default {
@@ -320,7 +320,7 @@ export default {
 
         <button class="rounded btn btn-dark"  @click=" buyProducts( arrayCart, store.content.currentPrice)" >
 
-          finalizza acquisto
+          <router-link  :to="{name : 'CheckoutPage'}">finalizza acquisto</router-link>
 
         </button>
 
