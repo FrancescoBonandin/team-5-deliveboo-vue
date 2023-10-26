@@ -39,12 +39,25 @@ export default {
 
 <template>
 
-  <infoComponent/>
+  <footer class="container-fluid footer-height bg-footer-color">
+
+    <infoComponent/>
+
+  </footer>
 
 </template>
 
 <style lang="scss" scoped>
 
+footer{
+
+  // background-image:url( '../../public/img/footer bg.jpg');
+
+  // background-size:cover;
+
+  // background-position: bottom;
+
+}
 
 
 </style>

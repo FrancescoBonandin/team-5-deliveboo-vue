@@ -53,6 +53,12 @@
 
     box-sizing: border-box;
 
+    body{
+
+      width : 100vw
+
+    }
+
   }
 
  </style>

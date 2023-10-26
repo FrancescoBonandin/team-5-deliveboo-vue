@@ -134,17 +134,47 @@
 
 <template>
 
-  <div id="dish-showcase">
+  <div class="display-scren-plus-nav p-1 menu-bg-img position-relative">
 
-    <div class="dish-card" v-for="dish in dishes">
+    <div v-if="dishes.length == 0" class="position-absolute top-50 start-50 translate-middle">
 
-      <ul>
+      <h2 class="fs-1 text-primary text-center light-bg-card t-center ">siamo spiacenti questo ristorante non ha ancora nessun piatto <i class="fa-regular d-block fs-0 fa-face-frown"></i> </h2> 
 
-        <li>{{ dish.name }}</li>
+    </div>
 
-      </ul>
+    <div>
 
-      <button @click="addProduct(dish, cart), updateTotal(dish), saveInLocal(dish)">aggiungi al carrello</button>
+      <router-link :to="{name :'home'}">
+
+          <button class="btn btn-primary m-3">
+
+              indietro
+
+          </button>
+
+      </router-link>
+
+    </div>
+
+    <div id="dish-showcase">
+
+      <div class="dish-card rounded text-dark custom-shadow row" v-for="dish in dishes">
+
+          <div class="col-lg  col-md-12  text-center">
+
+            <button class="btn btn-success"  @click="addProduct(dish, cart), updateTotal(dish), saveInLocal(dish)">aggiungi al carrello</button>
+
+          </div>
+
+          <div class="col-lg col-md-12  text-center"><h5 class="text-uppercase">{{ dish.name }}</h5></div>
+
+          <div class="col-lg  col-md-12 text-center"> <h3 class="deliveboo-primary-t-color">Descrizione : </h3>{{ dish.description}}</div>
+
+          <div class="col-lg  col-md-12 text-center">{{ dish.price}} &euro; </div>
+        
+          <div class="col-lg col-md-12 m-1 w-250"> <img class="foto-frame" :src="dish.full_image" alt=""> </div>
+        
+      </div>
 
     </div>
 
@@ -156,25 +186,47 @@
 
 #dish-showcase {
   
-  width: 600px;
+  width: 90%;
 
   margin: auto;
 
   display: flex;
 
-  justify-content: space-between;
+  flex-direction: column;
 
-  border: 2px solid green;
+  margin-top: 7.1875rem;
+
+  justify-content: space-between;
 
   .dish-card {
 
-    border: 2px solid yellow;
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    flex-wrap: wrap;
 
     margin: 0.625rem;
 
     padding: 0.3125rem;
 
+    background-color: rgba(255, 255, 255, 0.925);
+
   }
+
+}
+
+.menu-bg-img{
+
+background-image: url( '../../public/img/menu bg.jpg');
+
+background-size: cover;
+
+background-repeat: no-repeat;
+
+background-position:center;
 
 }
 

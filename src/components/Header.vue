@@ -4,15 +4,11 @@ import { store } from "../js/store"
 
 import navComponent  from '../components/HeaderComponent/Nav.vue';
 
-import cartComponent  from '../components/HeaderComponent/Cart.vue';
-
 export default {
 
   components:{
 
     navComponent,
-
-    cartComponent,
 
   },
 
@@ -37,14 +33,29 @@ export default {
 
 <template>
 
-  <navComponent/>
+  <header id="nav-height-container" class="custom-shadow  d-flex aling-item-center p-0 z-3 bg-white">
 
-  <cartComponent/>
+    <navComponent/>
+
+  </header>
 
 </template>
 
-<style lang="scss">
+<style lang="scss" >
+@use '../scss/style.scss';
 
+#nav-height-container{
 
+  height: 7.1875rem;
+
+  position: fixed;
+
+  top:0;
+
+  right:0;
+
+  left:0;
+
+}
 
 </style>

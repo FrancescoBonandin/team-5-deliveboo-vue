@@ -18,6 +18,8 @@ export default {
     return {
 
       store,
+
+      show : false
       
     }
 
@@ -54,6 +56,20 @@ export default {
   },
 
   methods:{
+
+    showCart(){
+
+      if (this.show == false) {
+
+        this.show = true
+        
+      }else {
+
+        this.show = false
+        
+      }
+
+    },
 
     removeProduct(product){
 
@@ -201,119 +217,249 @@ export default {
 
 <template>
 
-  <div id="my-cart">
+  <div  id="cart-logo" v-if="show == false">
 
-    <ul v-for="(product) in arrayCart">
+    <div class="position-relative">
 
-      <li class="cart-item" >
+      <div @click="showCart()" class=" rounded square-container heavy-shadow">
+      
+        <img class="w-100" src="../../../public/img/450618.webp" alt="">
+    
+      </div>
 
-        <div>
+      <div v-if="arrayCart.length > 0" class="full-badje">
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div v-if="show == true" class="position-absolute" id="cart-container">
+
+    <div>
+
+      <div @click="showCart()" class="primary px-1 exit-cart-logo">
+        
+        <i class="fa-solid fa-up-right-from-square fs-4"></i>
+      
+      </div>
+
+    </div>
+
+    <ul class="my-cart list-unstyled d-flex flex-column frame-shadow rounded  p-1 position-relative">
+
+      <li class="position-absolute top-50 start-50 translate-middle text-center" v-if="arrayCart.length == 0">
+
+        <h5 class="text-uppercase deliveboo-primary-t-color">
+
+          carrello vuoto
+
+        </h5>
+
+      </li>
+
+      <li class="cart-item d-flex flex-column custom-shadow justify-content-between my-1 rounded bg-dark text-light " v-for="(product) in arrayCart" >
+
+        <div class="px-1">
 
           {{ product.name }}
 
         </div>
 
-        <div>
+        <div class="px-1" >
 
-          {{ product.price }}
+          {{ product.price }} &euro;
 
         </div>
 
-        <span>
+        <div class="d-flex deliveboo-primary-border rounded m-1">
+
+          <span class="w-50 text-center  ">
 
           {{ product.quantity }}
 
-        </span>
+          </span>
 
-        <button class="remove-item" @click="removeProduct(product), updateTotal(), updateLocal() ">
+          <div class="w-50 text-light">
 
-          remove product 
+            <button class="m-1 cart-item-btn" @click="removeProduct(product), updateTotal(), updateLocal() ">
 
-        </button>
+              -
 
-        <button  @click="addProduct(product), updateTotal(), updateLocal()">
+            </button>
 
-          add product
+            <button class="m-1 cart-item-btn "  @click="addProduct(product), updateTotal(), updateLocal()">
 
-        </button>
+              +
+
+            </button>
+
+          </div>
+
+        </div>
 
       </li>
 
     </ul>
 
-    <div class="total-price"  v-if="this.store.content.currentPrice > 0">
+    <div class="d-flex my-1 rounded">
 
-     {{ store.content.currentPrice.toLocaleString("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 2 })}}
+      <div class="total-price w-50 text-center align-self-center" >
 
-    </div>
+        <span class="primary-bg-card border border-black p-1 fs-4" v-if="this.store.content.currentPrice > 0">
+        
+          {{ store.content.currentPrice.toLocaleString("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 2 })}} &euro;
+        
+        </span>
 
-    <div class="buy-button">
+      </div>
 
-      <button  @click=" buyProducts( arrayCart, store.content.currentPrice)" >
+      <div class="buy-button w-50 p-1">
 
-        finalizza acquisto
+        <button class="rounded btn btn-dark"  @click=" buyProducts( arrayCart, store.content.currentPrice)" >
 
-      </button>
+          finalizza acquisto
+
+        </button>
+
+      </div>
 
     </div>
 
   </div>
-  
-  
+
 </template>
 
 <style lang="scss" scoped>
 
-  #my-cart{
+#cart-logo{
 
-  width: 18.75rem;
+  position: absolute;
 
-  margin-bottom: 18.75rem;
+  bottom: -11.875rem;
 
-  border: 2px solid red;
+  right: .625rem;
 
-  position:absolute;
+  cursor: pointer;
+  
+}
 
-  top:0;
+.full-badje{
 
-  right:0;
+  width:.75rem;
+
+  height: .75rem;
+
+  border-radius:100%;
+
+  position: absolute;
+
+  top:-0.375rem;
+
+  right:-0.375rem;
+
+  background-color: red
+}
+
+.exit-cart-logo{
+
+  cursor: pointer;
+
+}
+
+.exit-cart-logo:hover{
+
+  color: #008309
+}
+
+#cart-container{
+
+  bottom: -25rem;
+
+  right: .9375rem;
+  
+  width: 15.625rem;
+
+  height: 18.75rem;
+
+  .my-cart{
+
+    overflow-y: auto;
+
+    background-color: transparent;
+  
+    display: flex;
+
+    flex-wrap: wrap;
+
+    height:18.75rem;
+
+    background-color: rgba(0, 0, 0, 0.578);
 
     .cart-item{
 
-      border: 1px solid violet;
+      width: 100%;
 
-      margin: .3125rem;
+      height: 5.625rem
+
+    }
+
+    .cart-item-btn{
+
+      border-radius: .3125rem;
+
+      border-style: none;
+
+      font-size: 1.0625rem;
+
+      width: 23px;
+
+      color:white;
+
+      background-color: transparent;
       
-      padding: .3125rem;
+    }
 
-      button {
+    .cart-item-btn:hover{
 
-        margin:.3125rem
+      background-color: rgba(255, 255, 255, 0.901);
 
-      }
+      color:black;
 
     }
 
-    .total-price{
-
-      border: 1px solid grey;
-
-      margin: .3125rem;
-
-      padding: .3125rem;
-
-    }
-
-    .buy-button{
-
-      border: 1px solid blue;
-
-      margin: .3125rem;
-
-      padding: .3125rem;
-
-    }
   }
+
+}
+
+.frame-shadow{
+
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.heavy-shadow{
+
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+
+.square-container{
+
+  width: 3.125rem;
+
+  height: 3.125rem;
+
+  background-color:  #4caf50;;
+
+}
+
+.square-container:hover{
+  
+  background-color:  #26c32b;
+
+}
 
 
 </style>
