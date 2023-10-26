@@ -134,7 +134,7 @@
 
 <template>
 
-  <div class="display-scren-plus-nav p-1 menu-bg-img position-relative">
+  <div class="display-screen-plus-nav p-1 menu-bg-img position-relative">
 
     <div v-if="dishes.length == 0" class="position-absolute top-50 start-50 translate-middle">
 

@@ -37,33 +37,49 @@ export default {
 </script>
 
 <template>
-
-<div class="row">
-    <div class="col">
-
-      <h2>
-        Grazie, la tua transazione è andata a buon Fine
-      </h2>
-
-      <h4>
-        a breve verrà inviata una mail di conferma a te e al ristoratore da cui hai acquistato.
-      </h4>
-
-      <p>
-        Sei ancora affamato? Fatti un'altro giro tra i nostri ristoranti e riempi quello spaziettino
-      </p>
-
-      <router-link :to="{name:'home' }">
-        Ho fame!
-      </router-link>
-         
-    </div>
+<div class="container-fluid success-container position-relative">
+  <div class="row">
+      <div class="col-8 text-center light-bg-card position-absolute top-50 start-50 translate-middle">
+  
+        <h2 class="text-success">
+          Grazie, la tua transazione è andata a buon fine
+        </h2>
+  
+        <p>
+          a breve verrà inviata una mail di conferma a te e al ristoratore da cui hai acquistato.
+        </p>
+  
+        <p>
+          Vuoi ancora ordinare? Clicca il bottone qui sotto e fatti un'altro giro tra i nostri ristoranti
+        </p>
+  
+        <router-link :to="{name:'home' }">
+          <button class="btn btn-primary mb-2">
+            Torna alla Home
+          </button>
+        </router-link>
+           
+      </div>
+  </div>
+  
 </div>
 
 </template>
 
 <style lang="scss" scoped>
 
+.success-container {
+  background-image: url('../../public/img/deliveboo client simple 2.jpg');
+
+  background-size: cover;
+
+  background-position: bottom;
+
+  min-height: calc(100vh - 7.1875rem);
+
+  
+  
+}
 
 
 </style>
