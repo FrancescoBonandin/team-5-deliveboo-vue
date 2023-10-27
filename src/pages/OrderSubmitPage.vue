@@ -118,14 +118,14 @@ export default {
       <div class="col-10 ">
           <div v-for="product in cart" class="light-bg-card mb-3 text-center p-2">
   
-            <h4 class="card-title">
+            <h4 class="card-title m-1">
               {{ product.name }} X {{ product.quantity }}
             </h4>
 
             <div class="row justify-content-between align-items-center">
                 
                 <div class="col-5">
-                  <img :src="product.full_image" alt="" class="img-fluid rounded-3">
+                  <img :src="product.full_image" alt="" class="img-fluid rounded-3 foto-frame">
 
                 </div>
 
@@ -177,6 +177,8 @@ export default {
     background-position: bottom;
 
     min-height: calc(100vh - 7.1875rem);
+
+    margin-top: 115px;
   }
 
 

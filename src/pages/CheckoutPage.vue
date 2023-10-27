@@ -124,9 +124,9 @@ export default {
 
 <template>
 
-<div class="container">
+<div class="container-fluid payment-box">
  
-  <div class="row" >
+  <div class="row justify-content-center" >
     <div class="col-6">
 
       <div v-if="dbErrors" class="alert alert-danger">
@@ -136,61 +136,69 @@ export default {
         </div>
 
       </div>
+      
+      <form @submit.prevent="checkOrder()" class="form-control m-auto">
 
-      <form @submit.prevent="checkOrder()" >
 
 
-
-        <div class="form-floating">
-
-          <label class="form-label" for="name">Name</label>
+        <div class="form-floating mb-2">
 
           <input class="form-control" id="name" type="text" name="name" placeholder="client name" v-model="store.content.customerInfo.name" required>
-
+          
+          <label class="form-label" for="name">Name</label>
+          
         </div>
 
-        <div class="form-floating">
-
-          <label class="form-label" for="last-name">Last Name</label>
+        <div class="form-floating mb-2">
 
           <input class="form-control" id="last-name" type="text" name="last_name" placeholder="client last name" v-model="store.content.customerInfo.last_name" required>
-
+          
+          <label class="form-label" for="last-name">Last Name</label>
+          
         </div>
 
-        <div class="form-floating">
-
-          <label class="form-label" for="address">Address</label>
+        <div class="form-floating mb-2">
 
           <input class="form-control" id="address" type="text" name="address" placeholder="client address" v-model="store.content.customerInfo.address" required>
-
+          
+          <label class="form-label" for="address">Address</label>
+          
         </div>
 
-        <div class="form-floating">
-
-          <label class="form-label" for="phone-number">Phone</label>
+        <div class="form-floating mb-2">
 
           <input class="form-control" id="phone-number" type="tel" name="phone_number" placeholder="clientphonenumber" v-model="store.content.customerInfo.phone_number" required>
 
+          <label class="form-label" for="phone-number">Phone</label>
+          
         </div>
 
-        <div class="form-floating">
 
-          <label class="form-label" for="email">Email</label>
+        <div class="form-floating mb-2">
 
           <input class="form-control" id="email" type="email" name="email" placeholder="client email" v-model="store.content.customerInfo.email" required>
 
+          <label class="form-label" for="email">Email</label>
+          
         </div>
 
-        <div>
-          
+
+
+        
+
+        <div class="mb-2">
           <div id="dropin-container"></div>
           <button id="submit-button">Request payment method</button>
+          
         </div>
 
 
-        <button  :disabled="flag===false" type="submit">Invia</button>
+        <button  :disabled="flag===false" type="submit" class="btn btn-primary">Invia</button>
 
       </form>
+        
+      
+
       
     </div>
 
@@ -212,8 +220,18 @@ export default {
 
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
+.payment-box {
+  background-image: url('../../public/img/deliveboo client simple 2.jpg');
 
+    background-size: cover;
+
+    background-position: bottom;
+
+    min-height: calc(100vh - 7.1875rem);
+
+    
+}
 
 </style>
