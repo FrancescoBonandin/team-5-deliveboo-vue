@@ -26,7 +26,9 @@
 
       found : false,
 
-      store 
+      store ,
+
+      selected : false,
 
       }
 
@@ -38,6 +40,24 @@
     },
 
     methods:{
+
+      showSelected(product){
+
+        if(Array.from(this.store.content.cart).find(e => e.id == product.id)){
+
+          let find = product.id
+
+          console.log('selezionato');
+
+          return   find 
+
+        }else{
+
+          return false
+          
+        }
+
+      },
 
       addProduct(product){
         
@@ -158,19 +178,19 @@
 
     <div id="dish-showcase">
 
-      <div class="dish-card rounded text-dark custom-shadow row" v-for="dish in dishes">
+      <div v-for="dish in dishes" :class = "showSelected(dish)  ==  dish.id? 'dish-selected-card  dish-card rounded text-dark custom-shadow row' : 'dish-card rounded text-dark custom-shadow row dish-light-card'" >
 
-          <div class="col-lg  col-md-12  text-center">
+          <div class="col-lg  col-md-12 my-2 text-center">
 
-            <button class="btn btn-success"  @click="addProduct(dish, cart), updateTotal(dish), saveInLocal(dish)">aggiungi al carrello</button>
+            <button class="btn btn-success"  @click="addProduct(dish, cart), updateTotal(dish), saveInLocal(dish), showSelected(dish)">aggiungi al carrello</button>
 
           </div>
 
-          <div class="col-lg col-md-12  text-center"><h5 class="text-uppercase">{{ dish.name }}</h5></div>
+          <div class="col-lg col-md-12 m-1  text-center"><h5 class="text-uppercase">{{ dish.name }}</h5></div>
 
           <div class="col-lg  col-md-12 text-center"> <h3 class="deliveboo-primary-t-color">Descrizione : </h3>{{ dish.description}}</div>
 
-          <div class="col-lg  col-md-12 text-center">{{ dish.price}} &euro; </div>
+          <div class="col-lg  col-md-12 py-1 text-center">{{ dish.price}} &euro; </div>
         
           <div class="col-lg col-md-12 m-1 w-250"> <img class="foto-frame" :src="dish.full_image" alt=""> </div>
         
@@ -194,7 +214,7 @@
 
   flex-direction: column;
 
-  margin-top: 7.1875rem;
+  margin-top: 1.25rem;
 
   justify-content: space-between;
 
@@ -212,11 +232,21 @@
 
     padding: 0.3125rem;
 
+  }
+
+  }
+
+  .dish-light-card{
+
     background-color: rgba(255, 255, 255, 0.925);
 
   }
 
-}
+  .dish-selected-card{
+
+    background-color: chocolate
+
+  }
 
 .menu-bg-img{
 
