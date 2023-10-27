@@ -97,7 +97,7 @@
 
 .footer-height{
 
-min-height: 9.375rem;
+  min-height: 9.375rem;
 
 }
 
@@ -117,6 +117,7 @@ min-height: 9.375rem;
 .h-60px{
 
   height: 3.75rem;
+
 }
 
 .w-50px{
@@ -181,11 +182,13 @@ min-height: 9.375rem;
   background-color: transparent;
 
   border-color: transparent;
+
 }
 
 .mb-6{
 
   margin-bottom: 6.25rem;
+
 }
 
 .primary-border-card{
@@ -204,13 +207,11 @@ min-height: 9.375rem;
 
 }
 
-.display-scren-plus-nav{
+.display-screen-plus-nav{
 
-min-height: calc(100vh - 7.1875rem); ;
+  min-height: calc(100vh - 7.1875rem); ;
 
 }
-
-
 
 // TEXT
 
@@ -437,3 +438,4 @@ html::-webkit-scrollbar{
   -ms-overflow-style: none;
 
 }
+

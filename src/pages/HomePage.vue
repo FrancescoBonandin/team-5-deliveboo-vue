@@ -108,13 +108,13 @@ export default {
 
 <template>
 
-<div class="p-2 jumbo-client position-relative ">
+<div class="p-2 jumbo-client  display-screen-plus-nav position-relative">
 
-  <div class="">
+  <div class="mt-3">
 
-    <div class="d-flex flex-wrap justify-content-center ">
+    <div class="d-flex flex-wrap justify-content-center">
 
-      <div class="col-lg-8 col-md-8 col-sm-12">
+      <div class="col-lg-11">
 
         <div class=" d-flex flex-wrap justify-content-center align-item-center">
 
@@ -134,13 +134,13 @@ export default {
 
       </div>
 
-      <div class="col-lg-4 col-md-3 col-sm-12 d-flex align-item-center justify-content-center">
+      <div class="col-lg-2 d-flex align-item-center justify-content-center">
 
         <div class="d-flex justify-content-center align-item-center">
 
           <div class=" align-self-center">
 
-            <button class="btn btn-primary" @click="findRestaurant(selectedCategories)">trova ristorante</button>
+            <button class="btn btn-primary my-3 fs-4" @click="findRestaurant(selectedCategories)">trova ristorante</button>
 
           </div>
 
@@ -152,7 +152,7 @@ export default {
 
   </div>
 
-  <div class="results-container custom-shadow position-absolute start-50 top-55 translate-middle light-bg-card p-3" >
+  <div id="results" class="results-container custom-shadow m-special  col-lg-5 col-md-8 light-bg-card p-3" >
 
     <div class="fs-2">
 
@@ -182,9 +182,9 @@ export default {
 
       </div>
 
-      <div class="text-center primary-bg-card" v-if="results == 0 " >
+      <div class="text-center primary-bg-card p-1 " v-if="results == 0 " >
 
-        <span>nessun risultato</span>
+        <span class="">nessun risultato</span>
 
       </div>
 
@@ -222,7 +222,7 @@ export default {
 
 </div>
 
-<div id="restaurants" class=" main-min-content-container bg-restaurants container-fluid position-relative">
+<div id="restaurants" class=" pt-nav-heigth main-min-content-container bg-restaurants container-fluid position-relative">
 
   <ul class="row no-dot-list p-2">
 
@@ -244,7 +244,7 @@ export default {
 
     <template v-if="results > 0" v-for="(restaurant, index) in filteredRestaurants">
 
-      <li class="p-2 col-lg-4 no-dot-list ">
+      <li  class="p-2 col-lg-4 no-dot-list ">
 
         <div class="">
       
@@ -309,7 +309,6 @@ export default {
 
     padding-top: 7.5rem;
 
-    min-height: 37.5rem
 
   }
 
@@ -384,17 +383,43 @@ line-height: 3.75rem;
 
 .top-55{
 
-  top:65%
+  top:70%
 
 }
 
 .outline-black{
 
   text-shadow: 
-              -1px -1px 0 #000,
-              1px -1px 0 #000,
-              -1px 1px 0 #000,
-              1px 1px 0 #000,
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000,
+      
+  }
+
+.pt-nav-heigth{
+
+  padding-top: 7.5rem;
+
+}
+
+.m-special{
+
+    margin:auto;
+
+    margin-top: 9.375rem
+
+}
+
+@media screen and (max-width: 600px){
+
+.m-special{
+
+  margin-top: 95px;
+
+  margin: auto;
+
+}
 
 }
 

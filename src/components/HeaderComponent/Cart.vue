@@ -221,9 +221,9 @@ export default {
 
     <div class="position-relative">
 
-      <div @click="showCart()" class=" rounded square-container heavy-shadow">
+      <div @click="showCart()" class="p-1 rounded square-container heavy-shadow">
       
-        <img class="w-100" src="../../../public/img/450618.webp" alt="">
+        <img class="w-100" src="../../../public/img/cart-38.png" alt="">
     
       </div>
 
@@ -236,7 +236,7 @@ export default {
 
   </div>
 
-  <div v-if="show == true" class="position-absolute" id="cart-container">
+  <div v-if="show == true" class="position-absolute z-3" id="cart-container">
 
     <div>
 
@@ -276,7 +276,7 @@ export default {
 
         <div class="d-flex deliveboo-primary-border rounded m-1">
 
-          <span class="w-50 text-center  ">
+          <span class="w-50 text-center">
 
           {{ product.quantity }}
 
@@ -304,11 +304,11 @@ export default {
 
     </ul>
 
-    <div class="d-flex my-1 rounded">
+    <div class="d-flex my-1 rounded bg-white frame-shadow">
 
       <div class="total-price w-50 text-center align-self-center" >
 
-        <span class="primary-bg-card border border-black p-1 fs-4" v-if="this.store.content.currentPrice > 0">
+        <span class="primary-bg-card  p-1 fs-4" v-if="this.store.content.currentPrice > 0">
         
           {{ store.content.currentPrice.toLocaleString("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 2 })}} &euro;
         
@@ -320,7 +320,9 @@ export default {
 
         <button class="rounded btn btn-dark"  @click=" buyProducts( arrayCart, store.content.currentPrice)" >
 
-          <router-link  :to="{name : 'CheckoutPage'}">finalizza acquisto</router-link>
+          <span v-if="this.store.content.currentPrice == 0">finalizza acquisto</span>
+
+          <router-link v-if="this.store.content.currentPrice > 0"  class="text-decoration-none text-capitalize text-light" :to="{name : 'CheckoutPage'}">finalizza acquisto</router-link>
 
         </button>
 
@@ -340,7 +342,7 @@ export default {
 
   bottom: -11.875rem;
 
-  right: .625rem;
+  right: .4375rem;
 
   cursor: pointer;
   
@@ -354,7 +356,7 @@ export default {
 
   border-radius:100%;
 
-  position: absolute;
+  position:absolute;
 
   top:-0.375rem;
 
@@ -378,7 +380,7 @@ export default {
 
   bottom: -25rem;
 
-  right: .9375rem;
+  right: 0;
   
   width: 15.625rem;
 
@@ -386,17 +388,15 @@ export default {
 
   .my-cart{
 
-    overflow-y: auto;
+    overflow-y:auto;
 
     background-color: transparent;
   
     display: flex;
 
-    flex-wrap: wrap;
-
     height:18.75rem;
 
-    background-color: rgba(0, 0, 0, 0.578);
+    background-color: white;
 
     .cart-item{
 
@@ -460,6 +460,39 @@ export default {
   background-color:  #26c32b;
 
 }
+
+@media screen and (max-width: 600px){
+
+  #cart-logo{
+
+  position: absolute;
+
+  bottom: -11.875rem;
+
+  right: .375rem;
+
+  cursor: pointer;
+
+}
+
+#cart-container{
+
+  bottom: -20rem;
+
+  right: .3125rem;
+  
+  width: 15.625rem;
+
+  height: 18.75rem;
+
+}
+
+
+
+
+
+}
+
 
 
 </style>
