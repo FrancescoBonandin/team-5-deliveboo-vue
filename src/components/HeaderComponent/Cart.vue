@@ -217,7 +217,7 @@ export default {
 
 <template>
 
-  <div  id="cart-logo" v-if="show == false">
+  <div  id="cart-logo" v-if="show == false && store.content.paid == false">
 
     <div class="position-relative">
 
@@ -236,7 +236,7 @@ export default {
 
   </div>
 
-  <div v-if="show == true" class="position-absolute z-3" id="cart-container">
+  <div v-if="show == true && store.content.paid == false" class="position-absolute z-3" id="cart-container">
 
     <div>
 

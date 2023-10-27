@@ -405,9 +405,9 @@ line-height: 3.75rem;
 
 .m-special{
 
-    margin:auto;
+  margin:auto;
 
-    margin-top: 9.375rem
+  margin-top: 9.375rem
 
 }
 
@@ -423,6 +423,44 @@ line-height: 3.75rem;
 
 }
 
-  
+@media screen and (max-width: 600px){
+
+.m-special{
+
+  margin-top: 95px;
+
+  margin: auto;
+
+}
+
+}
+
+@media screen and (min-width: 1400px){
+
+.m-special{
+
+  position:absolute;
+
+  top:50%;
+
+  left:50%;
+
+  transform: translate(-50%, -50%) ;
+
+
+}
+
+.bg-restaurants{
+
+background-image: url('../../public/img/deliveboo client simple 2.jpg');
+
+background-size: cover;
+
+background-position: top;
+
+}
+
+}
+
 
 </style>
