@@ -106,6 +106,12 @@ export default {
       })
 
     }
+    },
+
+    confirmedCheck(){
+
+      this.store.content.paid = true
+
     }
 
   },
@@ -194,6 +200,7 @@ export default {
 
 
         <button  :disabled="flag===false" type="submit" class="btn btn-primary">Invia</button>
+        <button  @click="confirmedCheck()" :disabled="flag===false" type="submit">Invia</button>
 
       </form>
         

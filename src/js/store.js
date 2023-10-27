@@ -30,7 +30,9 @@ export const store = reactive({
             'phone_number' : null,
             'email' : null,
       
-        }
+        },
+        
+        paid: false
 
     }
 

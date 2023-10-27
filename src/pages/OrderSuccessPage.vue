@@ -28,6 +28,12 @@ export default {
 
   methods:{
 
+    retriveCart(){
+
+      this.store.content.paid = false
+
+    }
+
    
  }
 
@@ -54,7 +60,7 @@ export default {
         </p>
   
         <router-link :to="{name:'home' }">
-          <button class="btn btn-primary mb-2">
+          <button @click="retriveCart()" class="btn btn-primary mb-2">
             Torna alla Home
           </button>
         </router-link>
