@@ -49,6 +49,8 @@ export default {
 
 <style lang="scss" scoped>
 
+@use '../scss/style.scss';
+
 footer{
 
   // background-image:url( '../../public/img/footer bg.jpg');

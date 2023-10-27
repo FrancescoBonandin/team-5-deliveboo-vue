@@ -20,7 +20,7 @@ export default {
         
                         'title' : 'info',
                         
-                        'links' : ['Domande frequenti','Accedi','Registrati su Deliveboo','Miglior Prezzo Garantito,','Scarica l`app di Just Eat']
+                        'links' : ['Domande frequenti','Accedi','Registrati su Deliveboo','Miglior Prezzo Garantito,','Scarica l`app di Deliveboo']
     
                       },
 
@@ -36,7 +36,7 @@ export default {
                         
                         'title' : 'catene',
                         
-                        'links' : ['Burger King','Accedi','Mc Donald','Zushi','RoadHouse', 'Taco Bel','Pizza Hut']
+                        'links' : ['Burger King','Piola','Mc Donald','Zushi','RoadHouse', 'Taco Bell','Pizza Hut']
 
                       },
     
@@ -69,7 +69,7 @@ export default {
 
       <span class="mx-3" v-for="info in footerInfo"  >
 
-        <h3>{{ info.title }}</h3>
+        <h3 class="text-capitalize">{{ info.title }}</h3>
 
         <ul class=" no-dot-list p-0 ">
 
