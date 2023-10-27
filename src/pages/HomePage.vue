@@ -232,7 +232,7 @@ export default {
 
           <h2 class="fs-1 w-100 text-center">
 
-            scegli le categorie e premi<span class="text-primary"> 'trova ristorante'</span> 
+            Scegli le categorie e premi<span class="text-primary"> 'trova ristorante'</span> 
 
           </h2>
 
@@ -244,7 +244,7 @@ export default {
 
     <template v-if="results > 0" v-for="(restaurant, index) in filteredRestaurants">
 
-      <li  class="p-2 col-lg-4 no-dot-list ">
+      <li class="p-2 col-lg-4 no-dot-list ">
 
         <div class="">
       

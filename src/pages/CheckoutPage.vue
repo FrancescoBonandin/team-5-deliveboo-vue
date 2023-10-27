@@ -130,20 +130,23 @@ export default {
 
 <template>
 
-<div class="container-fluid payment-box">
+<div class="container-fluid payment-box py-3 custom-shadow ">
  
-  <div class="row justify-content-center" >
-    <div class="col-6">
+  <div class="row  justify-content-center mt-50px " >
+
+    <div class="col-lg-6 col-md-6 col-sm-12">
 
       <div v-if="dbErrors" class="alert alert-danger">
 
         <div v-for="Singleerror in dbErrors" >
+
           {{Singleerror.toString()}}
+          
         </div>
 
       </div>
       
-      <form @submit.prevent="checkOrder()" class="form-control m-auto">
+      <form @submit.prevent="checkOrder()" class="form-control">
 
 
 
@@ -199,8 +202,8 @@ export default {
         </div>
 
 
-        <button  :disabled="flag===false" type="submit" class="btn btn-primary">Invia</button>
-        <button  @click="confirmedCheck()" :disabled="flag===false" type="submit">Invia</button>
+        
+        <button  @click="confirmedCheck()" :disabled="flag===false" class="btn btn-primary" type="submit">Invia</button>
 
       </form>
         
@@ -228,6 +231,14 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+@use '../scss/style.scss';
+
+.mt-50px{
+
+  margin-top: 3.125rem;
+
+}
 
 .payment-box {
   background-image: url('../../public/img/deliveboo client simple 2.jpg');
