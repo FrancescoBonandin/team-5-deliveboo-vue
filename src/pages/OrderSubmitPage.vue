@@ -82,9 +82,10 @@ export default {
 
       this.store.content.currentPrice=0
 
-    
-    
-   
+      localStorage.setItem('total_price', JSON.stringify(this.store.content.currentPrice))
+
+      localStorage.setItem('cart', JSON.stringify(this.store.content.cart))
+
     return router.push({name : 'OrderSuccess'})
 
     
@@ -113,55 +114,83 @@ export default {
 </script>
 
 <template>
-<div class="container-fluid submit-page position-relative border">
-  <div class="d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle">
-      <div class="col-10 ">
-          <div v-for="product in cart" class="light-bg-card mb-3 text-center p-2">
-  
-            <h4 class="card-title m-1">
-              {{ product.name }} X {{ product.quantity }}
+
+<div class="container-fluid d-flex align-item-center justify-content-center submit-page position-relative  p-2">
+
+  <div class="row  w-75 justify-content-center align-items-center ">
+
+    <div class="light-bg-card text-center p-2 align-self-center col-lg-4  col-md-12 custom-shadow">
+
+        <h3>
+
+          Dati Ordine
+
+        </h3>
+
+        <div class="py-1" v-for="info in store.content.customerInfo">
+
+          <span>{{info}}</span>
+
+        </div>
+
+        <button @click="SendOrder() " class="btn btn-primary m-1">
+
+          conferma l' ordine
+
+        </button>
+          
+    </div>
+
+    <div class="col-lg-7 col-md-12 m-2 jumbo-client-container overflow-y-auto rounded  concave-shadow">
+
+      <div v-for="product in cart" class="row light-bg-card mb-3 text-center p-2 my-1 custom-shadow ">
+          
+        <div class="col-lg-4 col-sm-12 justify-content-center aling-item-center  d-flex ">
+
+          <div class="align-self-center">
+
+            <h4 class="">
+
+              {{ product.name }}
+
             </h4>
 
-            <div class="row justify-content-between align-items-center">
-                
-                <div class="col-5">
-                  <img :src="product.full_image" alt="" class="img-fluid rounded-3 foto-frame">
+            <h4>
 
-                </div>
+              X {{ product.quantity }}
 
-                <div class="col-7">
+            </h4>
 
-                  <div>
-                    {{ product.ingredients }}
-                  </div>
-
-                  <div>
-                    {{ product.description }}
-                  </div>
-                  
-                  <div>
-                    partial price:{{ product.price*product.quantity}}
-                  </div>
-
-                </div>
-              </div>
           </div>
-  
-          <div class="light-bg-card text-center p-2">
-            <h3>
-                Dati Ordine
-            </h3>
 
-            <div v-for="info in store.content.customerInfo">
-                {{info}}
-            </div>
+        </div>
 
-            <button @click="SendOrder() " class="btn btn-primary">
-                conferma l' ordine
-            </button>
+        <div class="col-lg-6 col-sm-12 row justify-content-between ">
               
+          <div class="col">
+            
+            <img :src="product.full_image" alt="" class="img-fluid rounded-3 foto-frame">
+
           </div>
+
+        </div>
+
+        <div class="col-lg-2 col-sm-12 d-flex">
+              
+          <div class="align-self-center justify-self-center m-auto ">
+
+            <div>partial price:</div> 
+            
+            <div>{{ product.price*product.quantity}}&euro;</div>
+
+          </div>
+
+        </div>
+
       </div>
+
+    </div>
+
   </div>
   
 </div>
@@ -169,6 +198,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+@use '../scss/style.scss';
   .submit-page {
     background-image: url('../../public/img/deliveboo client simple 2.jpg');
 
@@ -181,5 +212,9 @@ export default {
     margin-top: 115px;
   }
 
+.concave-shadow{
 
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+}
 </style>

@@ -103,6 +103,10 @@
 
           this.store.content.currentPrice = this.store.content.prices.reduce(function(a, b,){
 
+            a = Number(a)
+
+            b = Number(b)
+
             let sum = a + b 
 
             return sum.toFixed(2)
