@@ -458,6 +458,8 @@ background-size: cover;
 
 background-position: top;
 
+z-index:0;
+
 }
 
 }
