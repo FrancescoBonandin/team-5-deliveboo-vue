@@ -188,7 +188,7 @@ export default {
 
         <div class="mb-2">
           <div id="dropin-container"></div>
-          <button id="submit-button">Request payment method</button>
+          <button id="submit-button" class="btn btn-success">Request payment method</button>
           
         </div>
 
