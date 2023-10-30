@@ -109,7 +109,7 @@
 
             let sum = a + b 
 
-            return sum.toFixed(2)
+            return Number(sum).toFixed(2)
 
           })
 
@@ -127,7 +127,7 @@
 
         localStorage.removeItem('total_price',)
 
-        localStorage.setItem('total_price', JSON.stringify(this.store.content.currentPrice))
+        localStorage.setItem('total_price', this.store.content.currentPrice)
 
       },
 

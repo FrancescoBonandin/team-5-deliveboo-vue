@@ -88,7 +88,7 @@ export default {
 
       this.store.content.currentPrice=0
 
-      localStorage.setItem('total_price', JSON.stringify(this.store.content.currentPrice))
+      localStorage.setItem('total_price', this.store.content.currentPrice)
 
       localStorage.setItem('cart', JSON.stringify(Array.from(this.store.content.cart)))
 

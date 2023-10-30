@@ -129,7 +129,7 @@ export default {
 
       localStorage.removeItem('total_price',)
 
-      localStorage.setItem('total_price', JSON.stringify(this.store.content.currentPrice.toFixed(2)))
+      localStorage.setItem('total_price', Number(this.store.content.currentPrice).toFixed(2))
 
       this.store.content.cart = new Set(this.store.content.cart)
 
@@ -153,7 +153,9 @@ export default {
 
             let sum = a + b 
 
-            return sum.toFixed(2)
+            console.log(sum)
+
+            return Number(sum.toFixed(2))
 
           })
 
