@@ -52,7 +52,7 @@ export default {
         </h2>
   
         <p>
-          a breve verrà inviata una mail di conferma a te e al ristoratore da cui hai acquistato.
+          a breve ti verrà  inviata una mail di conferma dell'ordine .
         </p>
   
         <p>
