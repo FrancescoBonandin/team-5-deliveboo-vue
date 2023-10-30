@@ -90,7 +90,7 @@ export default {
 
       localStorage.setItem('total_price', JSON.stringify(this.store.content.currentPrice))
 
-      localStorage.setItem('cart', JSON.stringify(this.store.content.cart))
+      localStorage.setItem('cart', JSON.stringify(Array.from(this.store.content.cart)))
 
       return router.push({name : 'OrderSuccess'})
 
