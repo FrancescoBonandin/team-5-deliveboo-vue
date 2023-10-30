@@ -129,7 +129,7 @@ export default {
 
       localStorage.removeItem('total_price',)
 
-      localStorage.setItem('total_price', JSON.stringify(this.store.content.currentPrice))
+      localStorage.setItem('total_price', JSON.stringify(this.store.content.currentPrice.toFixed(2)))
 
       this.store.content.cart = new Set(this.store.content.cart)
 
@@ -183,9 +183,9 @@ export default {
            
   },
 
-  created () {
+  mounted () {
 
-    if(Array(JSON.parse(localStorage.getItem('cart'))).length == 0 ){
+    if(Array(JSON.parse(localStorage.getItem('cart'))) == [] ){
 
       this.store.content.cart = new Set()
 
@@ -193,7 +193,7 @@ export default {
 
       localStorage.removeItem('total_price',)
 
-      localStorage.setItem('cart', this.store.content.cart)
+      localStorage.setItem('cart',JSON.stringify(Array.from(this.store.content.cart)))
 
       localStorage.setItem('total_price', this.store.content.currentPrice)
 
