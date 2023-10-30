@@ -68,7 +68,10 @@ export default {
 
       },
       (createErr, instance )=> {
-      button.addEventListener('click',()=> {
+      button.addEventListener('click',(e)=> {
+        e.preventDefault()
+        e.stopPropagation()
+
         instance.requestPaymentMethod((requestPaymentMethodErr, payload )=> {
           if (payload) {
 
