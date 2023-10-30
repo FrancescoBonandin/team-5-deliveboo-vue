@@ -35,6 +35,12 @@ export default {
 
   methods:{
 
+    confirmedCheck(){
+
+      this.store.content.paid = false
+
+    },
+
     SendOrder(){
 
     let data={ 
@@ -86,7 +92,7 @@ export default {
 
       localStorage.setItem('cart', JSON.stringify(this.store.content.cart))
 
-    return router.push({name : 'OrderSuccess'})
+      return router.push({name : 'OrderSuccess'})
 
     
   }
@@ -115,9 +121,19 @@ export default {
 
 <template>
 
+<router-link :to="{name :'CheckoutPage'}">
+
+  <button class="btn btn-primary m-3"  @click="confirmedCheck()">
+
+    indietro
+
+  </button>
+
+</router-link>
+
 <div class="container-fluid d-flex align-item-center justify-content-center submit-page position-relative  p-2">
 
-  <div class="row  w-75 justify-content-center align-items-center ">
+  <div class="row  w-75 justify-content-center align-items-center">
 
     <div class="light-bg-card text-center p-2 align-self-center col-lg-4  col-md-12 custom-shadow">
 

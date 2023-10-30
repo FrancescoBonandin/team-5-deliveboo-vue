@@ -35,6 +35,30 @@ export default {
   },
 
   methods:{
+
+    returnId(){
+
+      if(Array.from(this.store.content.cart).length >0){
+
+        this.store.content.cart.forEach(item => {
+
+         this.store.content.restaurantId = item.restaurant_id
+
+        })
+
+        return this.store.content.restaurantId
+
+      }else{
+
+
+        return this.store.content.restaurantId
+        
+      }
+
+      
+
+    },
+
     braintree(){
       let button = document.querySelector('#submit-button');
 
@@ -129,6 +153,16 @@ export default {
 </script>
 
 <template>
+
+<router-link :to="{name : 'restaurant-menu' , params : { id : returnId()}}">
+
+  <button class="btn btn-primary m-3" @click="returnId()">
+
+    indietro
+
+  </button>
+
+</router-link>
 
 <div class="container-fluid payment-box py-3 custom-shadow ">
  

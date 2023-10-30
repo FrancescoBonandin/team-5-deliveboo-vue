@@ -12,6 +12,8 @@ export const store = reactive({
 
         currentPrice : 0,
 
+        restaurantId : 0,
+
         sum : 0,
 
         order : {
