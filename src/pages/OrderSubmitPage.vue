@@ -121,19 +121,27 @@ export default {
 
 <template>
 
-<router-link :to="{name :'CheckoutPage'}">
+<div class="container-fluid d-flex align-item-center justify-content-center submit-page position-relative  p-2  flex-wrap">
 
-  <button class="btn btn-primary m-3"  @click="confirmedCheck()">
+  <div class=" w-100 ">
 
-    indietro
+  <router-link :to="{name :'CheckoutPage'}">
 
-  </button>
+    
 
-</router-link>
+      <button class="btn btn-primary m-3"  @click="confirmedCheck()">
 
-<div class="container-fluid d-flex align-item-center justify-content-center submit-page position-relative  p-2">
+        indietro
 
-  <div class="row  w-75 justify-content-center align-items-center">
+      </button>
+
+    
+
+  </router-link>
+
+  </div>
+
+  <div class="row  w-75 justify-content-center align-items-center ">
 
     <div class="light-bg-card text-center p-2 align-self-center col-lg-4  col-md-12 custom-shadow">
 
@@ -228,6 +236,7 @@ export default {
     margin-top: 115px;
   }
 
+  
 .concave-shadow{
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;

@@ -157,17 +157,17 @@ export default {
 
 <template>
 
-<router-link :to="{name : 'restaurant-menu' , params : { id : returnId()}}">
-
-  <button class="btn btn-primary m-3" @click="returnId()">
-
-    indietro
-
-  </button>
-
-</router-link>
-
 <div class="container-fluid payment-box py-3 custom-shadow ">
+
+  <router-link :to="{name : 'restaurant-menu' , params : { id : returnId()}}">
+
+    <button class="btn btn-primary m-3" @click="returnId()">
+
+      indietro
+
+    </button>
+
+  </router-link>
  
   <div class="row  justify-content-center mt-50px " >
 
