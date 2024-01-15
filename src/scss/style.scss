@@ -1,0 +1,441 @@
+@import 'bootstrap/scss/bootstrap';
+
+.full-screen-container{
+
+  width: 100vw;
+
+  height: 100vh;
+
+}
+
+.bg-dark{
+
+  background-color: rgba(0, 0, 0, 0.043);
+}
+
+.bg-white{
+
+  background-color: white;
+
+}
+
+.main-height-container{
+
+  min-height: calc(100vh - 7.1875rem);
+
+}
+
+.main-content-container{
+
+  height : 34.375rem;
+
+}
+
+.main-min-content-container{
+
+  min-height: 40.625rem
+
+}
+
+.display-foto-container{
+
+  height: 33.125rem;
+
+}
+
+.display-dishes-container{
+
+  max-height: 31.25rem ;
+
+  overflow-y: auto;
+
+}
+
+.jumbo-client-container{
+
+  height: 28.125rem;
+
+}
+
+.foto-frame{
+
+  height: 9.375rem;
+
+  width: 100%;
+
+  object-fit: cover;
+
+  border-radius: .3125rem;
+
+}
+
+
+.foto-md_frame{
+
+  height: 15.625rem;
+
+  width: 12.5rem ;
+
+  object-fit: cover;
+
+  border-radius: .3125rem;
+
+}
+
+.sm-foto-frame{
+
+  height: 4.0625rem;
+
+  width: 7.5rem;
+
+  object-fit: cover;
+
+  border-radius: .3125rem;
+
+
+}
+
+.footer-height{
+
+  min-height: 9.375rem;
+
+}
+
+.add-button-p{
+
+  position:fixed;
+
+  right:0
+}
+
+.h-70px{
+
+  height: 4.375rem;
+
+}
+
+.h-60px{
+
+  height: 3.75rem;
+
+}
+
+.w-50px{
+
+  width: 3.125rem;
+
+}
+
+.w-60{
+
+  width: 60%;
+}
+
+.w-500px{
+
+  width: 31.25rem;
+
+}
+
+.w-250px{
+
+  width: 15.625rem;
+
+}
+
+.w-700px{
+
+  width: 43.75rem;
+
+}
+
+.w-300px{
+
+  width: 18.75rem 
+
+}
+
+.p-top-main-content{
+
+  padding-top: 100px;
+
+}
+
+.primary-bg-card{
+
+  background-color: #fe9800;
+
+  border-radius: .625rem;
+
+}
+
+.light-bg-card{
+
+  background-color: rgba(255, 255, 255, 0.797);
+
+  border-radius: .625rem;
+
+}
+
+.transparent-bg-card{
+
+  background-color: transparent;
+
+  border-color: transparent;
+
+}
+
+.mb-6{
+
+  margin-bottom: 6.25rem;
+
+}
+
+.primary-border-card{
+
+  border:1px solid  #fe9a00;
+
+  border-radius: .625rem;
+
+}
+
+.display-restaurants{
+
+  height: calc(100vh - 7.1875rem);
+
+  padding-top: 12.5rem;
+
+}
+
+.display-screen-plus-nav{
+
+  min-height: calc(100vh - 7.1875rem); ;
+
+}
+
+// TEXT
+
+.fs-7{
+
+  font-size: .8125rem;
+}
+
+.fs-0{
+
+font-size: 3.125rem
+
+}
+
+
+.deliveboo-primary-t-color{
+
+  color:#fe9a00
+
+}
+
+.deliveboo-green-t-color{
+
+  color: #4caf50;
+
+}
+
+// BORDERS
+
+.deliveboo-primary-border{
+
+  border: 1px solid #fe9a00
+
+}
+
+.s-secondary-border-color{
+
+  border: .3125rem solid #f49831
+
+}
+
+// COMPONENTS
+.main-bg-image{
+
+  background-image: url('/resources/img/good_food-wallpaper-6.jpg');
+
+  background-size: cover;
+
+}
+
+.admin-bg-image{
+
+  background-image: url('/resources/img/admin-bg.jpg');
+
+  background-size: cover;
+
+
+}
+
+.custom-shadow{
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  
+}
+
+.custom-logo{
+
+  width: 15.625rem;
+
+  height: 15.625rem;
+
+  object-fit: contain;
+
+}
+
+
+.counter{
+
+  position: absolute;
+
+  top:0;
+
+  right: 0;
+
+  transform: translate(50%, -50%);
+
+  width: 2.1875rem;
+
+  height: 2.1875rem;
+
+  border-radius: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 1.125rem;
+
+  font-weight: 700;
+
+  border: .1875rem solid #4caf50;
+
+  background-color: white;
+
+  z-index: 99999;
+
+}
+
+.counter-y{
+
+  border: rgb(255, 238, 0);
+
+}
+
+.counter-r{
+
+  border: rgb(255, 0, 0);
+
+}
+
+.counter-frame{
+
+  width: 2.1875rem;
+
+  height: 2.1875rem;
+
+  border-radius: 100%;
+
+  background-color: white;
+
+  font-size: .9375rem;
+
+  font-weight:700;
+
+  position: relative;
+
+  border: .1875rem solid #f49831;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+}
+
+.card-title-options{
+
+  position: absolute;
+
+  top: 0;
+
+  right: 0;
+
+  left: 0;
+
+  bottom: 0;
+
+  background-color: rgba(20, 20, 20, 0.211);
+
+  visibility: hidden;
+
+}
+
+.button-r{
+
+  position: absolute;
+
+  right:-20px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  background-color: rgba(0, 0, 0, 0.275);
+
+  width: .625rem;
+
+  height: 90%;
+
+  border-radius: 25px;
+
+}
+
+.button-l{
+
+  position: absolute;
+
+  left:-20px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  background-color: rgba(0, 0, 0, 0.275);
+
+  width: .625rem;
+
+  height: 90%;
+
+  border-radius: 25px;
+
+}
+
+// EFFECTS
+.hover-trigger{
+
+  &:hover .card-title-options{
+
+      visibility: visible;
+
+  }
+
+}
+
+// REMOVE CROLLBAR
+
+html::-webkit-scrollbar{
+
+  display:none;
+
+  -ms-overflow-style: none;
+
+}
+
